@@ -1,0 +1,8 @@
+<div [formGroup]="groupFromParent">
+  <p><label>{{ field.name }}</label></p>
+  <input
+    [type]="field.type"
+    [formControlName]="field.name"
+    [value]="field.value" />
+  <hr />
+</div>

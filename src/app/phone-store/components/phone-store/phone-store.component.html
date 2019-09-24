@@ -1,0 +1,25 @@
+<form [formGroup]="phoneDataForm">
+
+  <pre>{{ this.phoneDataForm.value | json }}</pre>
+
+  <hr />
+
+<!--  <pre>{{ dataForm | json }}</pre>-->
+
+  <div *ngFor="let field of dataForm">
+    <app-phone-input
+      [field]="field.param"
+      [groupFromParent]="phoneDataForm"></app-phone-input>
+
+    <ng-container *ngIf="field.param.child_params">
+      <ng-container *ngFor="let fields of field.param.child_params; let num = index;" formArrayName="child_params" [formGroup]="phoneDataForm">
+        <ng-container *ngFor="let item of fields" [formGroupName]="num">
+          <pre>{{ item | json }}</pre>
+<!--          <app-phone-input-->
+<!--            [field]="item.param"></app-phone-input>-->
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+
+</form>
